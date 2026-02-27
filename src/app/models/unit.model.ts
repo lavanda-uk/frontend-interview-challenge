@@ -1,0 +1,14 @@
+export interface Unit {
+  id: number;
+  name: string;
+  isClean: boolean;
+  priority: 'high' | 'medium' | 'low';
+  cleanedBy: string | null;
+  cleanedAt: string | null;
+}
+
+export interface UnitUpdatePayload {
+  isClean: boolean;
+  cleanedBy: string | null;
+  cleanedAt: string | null;
+}

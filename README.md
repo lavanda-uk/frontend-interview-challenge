@@ -1,197 +1,89 @@
-# 🧹 Housekeeper App
+# Housekeeper App
 
-A housekeeping management app that allows staff to track cleaning status, demonstrate property knowledge, and report issues directly against units.
+A frontend coding challenge built with Angular 21 and Tailwind CSS.
 
 ---
 
-## 📱 Overview
+## Goal
 
-The Housekeeper App allows users to:
+Build a housekeeping management app that allows staff to track and update the cleaning status of units. The app should support the following features:
 
 - View **Dirty (Uncleaned)** units
 - Mark units as **Clean**
 - Capture cleaning details (name, date, time)
 - View **Cleaned** units
 - Mark units back to **Dirty**
-- Report issues against units
 - Search units by name
-- Filter dirty units by urgency
+- Sort dirty units by urgency
 
-The app is organized into two main tabs:
+How you structure the UI, routing, and components is entirely up to you.
 
-- **Dirty** (default tab)
-- **Clean**
+### App Flow
 
----
+![App Flow Diagram](public/flow-diagram.png)
 
-# 🚀 App Flow
+### Wireframe
 
-## 1️⃣ Launch App
+Below is a simple example wireframe to give you a rough idea of the screens. You are free to design and lay out the app however you like.
 
-- User opens the app
-- App lands on the **Main Screen**
-- Default tab is **Dirty (Uncleaned list)**
+![Wireframe](public/wireframe.png)
 
 ---
 
-# 🧾 Dirty Units Tab
+## Getting Started
 
-## What You See
+```bash
+npm install
+ng serve
+```
 
-- List of dirty units
-- Each unit displays:
-  - Unit name (e.g., Deluxe Suite 001)
-  - Urgency level (Easy, Medium, Urgent)
-  - **"Mark Clean"** button
-  - **"Report Issue"** option
-- Search input field
-- Urgency filter dropdown
+The app runs at `http://localhost:4200`.
 
 ---
 
-# ✅ Mark Unit as Clean
+## Data & API
 
-When marking a unit as clean, additional cleaning details must be captured.
+A mock backend is already set up using `angular-in-memory-web-api`. You don't need to run a separate server — all API calls are intercepted and handled in-memory.
 
-## Step 1: Tap "Mark Clean"
+The service at `src/app/services/unit.service.ts` provides methods to fetch and update unit data. The mock data lives in `src/app/services/in-memory-data.service.ts`.
 
-A modal dialog opens containing:
+### Endpoints
 
-- **Cleaner Name** (required)
-- **Cleaning Date** (required)
-- **Cleaning Time** (required)
+| Method | URL              | Description         |
+| ------ | ---------------- | ------------------- |
+| GET    | `api/units`      | Returns all units   |
+| GET    | `api/units/:id`  | Returns a single unit |
+| PUT    | `api/units/:id`  | Updates a unit      |
 
-## Step 2: Confirmation
+## What We’re Looking For
 
-After entering the required information, the user confirms:
+We’re assessing how you think and build as a senior/lead front-end engineer — not how “pretty” you can make a UI.
 
-**Mark clean?**  
-_Are you sure you want to mark this unit clean?_
+- **Architecture & maintainability**  
+  Clear structure, sensible separation of concerns, and choices that scale (routing, feature boundaries, shared utilities, etc.).
 
-Options:
-- **Cancel** → Action cancelled
-- **Confirm** → Continue
+- **State management & data flow**  
+  Thoughtful handling of client state and server state, predictable updates, and minimal coupling. (If using modern Angular: signals/computed/effects where appropriate.)
 
-## Step 3: System Will
+- **Modern Angular practices**  
+  Good use of standalone components, typed forms, reactive patterns, dependency injection, and Angular’s recommended patterns. Avoid unnecessary complexity.
 
-- Update unit status to `Clean`
-- Store:
-  - Cleaner name
-  - Cleaning date
-  - Cleaning time
-- Move unit to the **Clean tab**
+- **Component design & composition**  
+  Well-scoped components, reusable primitives where it makes sense, and clean inputs/outputs. Minimal prop drilling and good encapsulation.
 
----
+- **Semantic HTML + accessibility**  
+  Correct semantic elements (buttons/labels/forms), keyboard navigation, focus states, and accessible form validation/messages.
 
-## 🛠 Report Issue (From Dirty Tab)
+- **Tailwind (or styling) discipline**  
+  Consistent spacing/typography patterns, responsive layout where relevant, and readable class usage (not class soup). Utility usage that supports maintainability.
 
-Housekeepers can report issues while cleaning to demonstrate property knowledge.
+- **UX correctness (not visual design)**  
+  Clear flows and user feedback: loading states, disabled states, empty states, error handling, confirmation patterns, and sensible defaults.
 
-### Steps:
+- **Quality & engineering rigor**  
+  Types are accurate, edge cases are handled, and the app feels robust. Bonus for small tests or a clear testing strategy, but not required.
 
-1. Tap **"Report Issue"**
-2. Issue form opens
-3. User enters:
-  - **Issue Name** (required)
-  - **Issue Description** (required)
-4. Submit
+- **Product thinking**  
+  Sensible tradeoffs, good naming, clear intent in the UI, and implementation choices that reflect real-world usage.
 
-### System Will:
-
-- Attach issue to the unit ID
-- Store:
-  - Unit ID
-  - Issue name
-  - Issue description
-  - Reported by (housekeeper name)
-  - Timestamp
-- Keep unit in current status
-
----
-
-# 🧽 Clean Units Tab
-
-## What You See
-
-- List of clean units
-- Each unit displays:
-  - Unit name
-  - `Cleaned by {Name}`
-  - `Date: {Cleaning Date}`
-  - `Time: {Cleaning Time}`
-  - **"Mark Dirty"** button
-  - **"Report Issue"** option
-- Search input field
-
-⚠️ No urgency filter in Clean tab  
-(Urgency only applies to units that require cleaning.)
-
----
-
-# 🔁 Mark Unit as Dirty
-
-1. Tap **"Mark Dirty"**
-2. Confirmation modal appears:
-
-   **Mark dirty?**  
-   _Are you sure you want to mark this unit dirty?_
-
-3. Select:
-  - **Cancel** → Action cancelled
-  - **Confirm** → Continue
-
-4. System will:
-  - Update unit status to `Dirty`
-  - Remove cleaning metadata:
-    - Cleaner name
-    - Cleaning date
-    - Cleaning time
-  - Move unit back to the **Dirty tab**
-
----
-
-# 🔎 Filtering & Search
-
-## Dirty Tab
-
-- Search by unit name
-- Filter by urgency:
-  - Easy
-  - Medium
-  - Urgent
-
-## Clean Tab
-
-- Search by unit name only
-- No urgency filter
-
----
-
-# 🧠 Status Logic
-
-| Action        | Result |
-|--------------|--------|
-| Mark Clean   | Status → Clean |
-| Store Cleaner Info | Name + Date + Time saved |
-| Mark Dirty   | Status → Dirty |
-| Remove Cleaner Info | Cleaning metadata cleared |
-| Report Issue | Issue attached to unit |
-
----
-
-# 🗂 Data Models
-
-## Unit
-
-```ts
-interface Unit {
-  id: string;
-  name: string;
-  status: 'dirty' | 'clean';
-  urgency?: 'easy' | 'medium' | 'urgent'; // Only relevant when dirty
-
-  cleanedBy?: string;
-  cleanedDate?: string; // ISO date string (YYYY-MM-DD)
-  cleanedTime?: string; // HH:mm format
-}
-# frontend-interview-challenge
+Good luck!

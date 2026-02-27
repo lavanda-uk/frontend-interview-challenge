@@ -1,0 +1,156 @@
+import { Injectable } from '@angular/core';
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+
+@Injectable({ providedIn: 'root' })
+export class InMemoryDataService implements InMemoryDbService {
+  createDb() {
+    const units: any[] = [
+      {
+        id: 1,
+        name: 'Room 101',
+        isClean: false,
+        priority: 'high',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 2,
+        name: 'Room 102',
+        isClean: true,
+        priority: 'low',
+        cleanedBy: 'Alice Johnson',
+        cleanedAt: '2026-02-27T08:30:00Z',
+      },
+      {
+        id: 3,
+        name: 'Room 201',
+        isClean: false,
+        priority: 'medium',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 4,
+        name: 'Room 202',
+        isClean: true,
+        priority: 'low',
+        cleanedBy: 'Bob Smith',
+        cleanedAt: '2026-02-26T14:15:00Z',
+      },
+      {
+        id: 5,
+        name: 'Room 301',
+        isClean: false,
+        priority: 'high',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 6,
+        name: 'Room 302',
+        isClean: false,
+        priority: 'medium',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 7,
+        name: 'Room 401',
+        isClean: true,
+        priority: 'low',
+        cleanedBy: 'Alice Johnson',
+        cleanedAt: '2026-02-27T09:00:00Z',
+      },
+      {
+        id: 8,
+        name: 'Room 402',
+        isClean: false,
+        priority: 'high',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 9,
+        name: 'Room 501',
+        isClean: false,
+        priority: 'high',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 10,
+        name: 'Room 502',
+        isClean: false,
+        priority: 'medium',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 11,
+        name: 'Room 601',
+        isClean: true,
+        priority: 'low',
+        cleanedBy: 'Carlos Rivera',
+        cleanedAt: '2026-02-27T07:45:00Z',
+      },
+      {
+        id: 12,
+        name: 'Room 602',
+        isClean: false,
+        priority: 'high',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 13,
+        name: 'Room 701',
+        isClean: false,
+        priority: 'medium',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 14,
+        name: 'Room 702',
+        isClean: true,
+        priority: 'low',
+        cleanedBy: 'Dana Lee',
+        cleanedAt: '2026-02-26T16:30:00Z',
+      },
+      {
+        id: 15,
+        name: 'Room 801',
+        isClean: false,
+        priority: 'medium',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 16,
+        name: 'Room 802',
+        isClean: false,
+        priority: 'high',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+      {
+        id: 17,
+        name: 'Room 901',
+        isClean: true,
+        priority: 'low',
+        cleanedBy: 'Alice Johnson',
+        cleanedAt: '2026-02-27T10:15:00Z',
+      },
+      {
+        id: 18,
+        name: 'Room 902',
+        isClean: false,
+        priority: 'medium',
+        cleanedBy: null,
+        cleanedAt: null,
+      },
+    ];
+
+    return { units };
+  }
+}
