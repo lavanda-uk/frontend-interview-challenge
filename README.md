@@ -18,6 +18,12 @@ Build a housekeeping management app that allows staff to track and update the cl
 
 How you structure the UI, routing, and components is entirely up to you.
 
+## Use of AI & Tools
+
+You’re welcome to use AI tools (e.g. ChatGPT, Copilot, Cursor) and any other resources that help you work effectively — we use AI in our day-to-day engineering work and have no issue with you doing the same.
+
+If you do use AI, please be prepared to briefly explain your approach and decisions, and ensure you understand and can maintain the code you submit.
+
 ### App Flow
 
 ![App Flow Diagram](public/flow-diagram.png)
