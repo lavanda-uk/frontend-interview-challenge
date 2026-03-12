@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UnitUpdatePayload } from '../models/unit.model';
+import { Unit } from '../models/unit.model';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UnitService {
@@ -8,7 +9,7 @@ export class UnitService {
 
   private readonly baseUrl = '/api/units';
 
-  getUnits() {}
-  getUnit(id: number) {}
-  updateUnit(id: number, payload: UnitUpdatePayload) {}
+  getUnits(): Observable<Unit[]> {}
+  getUnit(id: number): Observable<Unit> {}
+  updateUnit(id: number, payload: Unit): Observable<Unit> {}
 }
