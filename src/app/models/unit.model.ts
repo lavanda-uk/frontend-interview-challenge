@@ -6,9 +6,3 @@ export interface Unit {
   cleanedBy: string | null;
   cleanedAt: string | null;
 }
-
-export interface UnitUpdatePayload {
-  isClean: boolean;
-  cleanedBy: string | null;
-  cleanedAt: string | null;
-}
